@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="BlocItOff">
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>Bloc Base Project</title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <title>Bloc It Off</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-    <script src="/js/app.js"></script>
+  <!-- Header for task list -->
+  <div class='page-title'>
+      <h2>Bloc It Off - Self Destructing Task List</h2>
+  </div>
+  
+  <!-- Task Buttons -->
+  <div class="task-buttons">
+      <button type="button" title="Current Tasks" class="btn btn-current"  ng-click="switchView('currentTasks')">
+      <a href ng-click="switchView('currentTasks')">Current Tasks</a>
+      <button type="button" title="Complete &amp; Inactive Tasks" class="btn btn-complete" ng-click="switchView('pastTasks')">
+      <a href ng-click="switchView('pastTasks')">Complete &amp; Inactive Tasks</a>
+  </div>
+  <!-- Task Lists -->
+  <div ui-view></div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+      <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+      <script src="/js/app.js"></script>
 </body>
 </html>

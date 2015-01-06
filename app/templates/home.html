@@ -1,1 +1,55 @@
-<h1>Home Page</h1>
+<!-- All tasks container -->
+<div class=''>
+   
+      <!-- Create new task -->
+      <div class="task-creation" ng-show="currentSubView == 'currentTasks'">
+        <form class="submit-task-form" ng-submit="createTask()">
+          <div class="task-input">
+            <input type="text" class="input-field-title" placeholder="Enter task title" ng-model="title">
+            <input type="text" class="input-field-description" placeholder="Enter task description" ng-model="description">
+            <div class="add-button">
+              <button type="submit" class="btn">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Display Current tasks -->
+      <div ng-repeat="(uid, taskObject) in data  " class='current-tasks' ng-show="currentSubView == 'currentTasks'">
+          <div class="task-title">
+          {{ taskObject.title  }}
+          </div>
+          <div class="task-description">
+          {{ taskObject.description }}
+          </div>
+          <!-- Button to complete a task -->
+          <div class='task-button-complete'>
+            <button type="image" title="Complete Task" class="" ng-click='completeTask(uid)'>
+              <img src="./app/images/Accept-icon.png" alt="Complete">
+            </button>
+          </div>
+          <!-- Button to remove a task -->
+          <div class='task-button-remove'>
+            <button type="image" title="Remove Task" class="btn btn-remove-task" ng-click="removeTask(uid)">
+              <img src="images/button_check.ico" alt="Remove">
+            </button>
+          </div>
+      </div>
+ 
+     <!-- Past and completed tasks -->
+     <div ng-repeat="(uid, taskObject) in data | filterByTaskStatus: taskObject.state" class='complete-tasks' ng-show="currentSubView == 'pastTasks'">
+        <div class="task-title">
+          {{ taskObject.title  }}
+          </div>
+          <div class="task-description">
+          {{ taskObject.description }}
+          </div>
+       <!-- TODO
+ng repeat with the same array 
+      GOOGLE THIS transform: translateX;
+--> 
+     </div>  
+     
+      
+</div>
+
